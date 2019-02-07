@@ -34,25 +34,57 @@ var library = {
     printPlaylists: function () {
         for (var key in this.playlists) {
             var playlist = this.playlists[key];
-            console.log((playlist.id) + ": " + playlist.name + " - " + playlist.tracks.length + " tracks");
+            console.log(
+                playlist.id +
+                ": " +
+                playlist.name +
+                " - " +
+                playlist.tracks.length +
+                " tracks"
+            );
         }
     },
     printTracks: function () {
-    for (var key in this.tracks) {
-        var trackList = this.tracks[key];
-        console.log((trackList.id) + ": " + trackList.name + " by " + trackList.artist + " (" + trackList.album + ")");
+        for (var key in this.tracks) {
+            var trackList = this.tracks[key];
+            console.log(
+                trackList.id +
+                ": " +
+                trackList.name +
+                " by " +
+                trackList.artist +
+                " (" +
+                trackList.album +
+                ")"
+            );
         }
     },
     printPlaylist: function (playlistId) {
         //print playlist info
         var trackId = this.playlists[playlistId].tracks;
-        console.log(playlistId + ": " + this.playlists[playlistId].name + " - " + trackId.length + " tracks")
-    
+        console.log(
+            playlistId +
+            ": " +
+            this.playlists[playlistId].name +
+            " - " +
+            trackId.length +
+            " tracks"
+        );
+
         // console.log(library.playlists[playlistId].tracks)
         for (i = 0; i < trackId.length; i++) {
             //Loop through t01, t02
             var currentTrackId = trackId[i];
-            console.log(this.tracks[currentTrackId].id + ": " + this.tracks[currentTrackId].name + " by " + this.tracks[currentTrackId].artist + " (" + this.tracks[currentTrackId].album + ")")
+            console.log(
+                this.tracks[currentTrackId].id +
+                ": " +
+                this.tracks[currentTrackId].name +
+                " by " +
+                this.tracks[currentTrackId].artist +
+                " (" +
+                this.tracks[currentTrackId].album +
+                ")"
+            );
         }
     },
     addTrackToPlaylist: function (trackId, playlistId) {
@@ -60,11 +92,11 @@ var library = {
         // proof that new track has been added to playlist
         // console.log(library.playlists[playlistId].tracks)
     },
-    addTrack: function (name, artist, album){
+    addTrack: function (name, artist, album) {
         // console.log(name);
         var newTrackId = uid();
-    
-        this.tracks[newTrackId] = {}
+
+        this.tracks[newTrackId] = {};
         this.tracks[newTrackId].id = newTrackId;
         this.tracks[newTrackId].name = name;
         this.tracks[newTrackId].artist = artist;
@@ -72,21 +104,22 @@ var library = {
     },
     addPlaylist: function (name) {
         var newPlaylistId = uid();
-    
+
         this.playlists[newPlaylistId] = {};
         this.playlists[newPlaylistId].id = newPlaylistId;
         this.playlists[newPlaylistId].name = name;
         this.playlists[newPlaylistId].tracks = [];
     }
-}
-
+};
 
 // generates a unique id
 // (use this for addTrack and addPlaylist)
 
 var uid = function () {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+    return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+};
 var breaker = "--------";
 library.printPlaylists();
 console.log(breaker);
@@ -109,7 +142,6 @@ console.log(library.playlists);
 //     library.playlists[newPlaylistId].id = newPlaylistId;
 //     library.playlists[newPlaylistId].name = name;
 //     library.playlists[newPlaylistId].tracks = [];
-
 
 // }
 // addPlaylist("New Playlist")
